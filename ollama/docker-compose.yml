@@ -1,0 +1,23 @@
+---
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "11434:11434"
+    volumes:
+      - .:/app
+      - ./models:/root/.ollama
+    entrypoint: ["./run_deepseek.sh"]
+    environment:
+      # - OLLAMA_DEBUG=1
+      - OLLAMA_HOST=0.0.0.0:11434
+      - OLLAMA_KEEP_ALIVE=5m         # The duration that models stay loaded in memory (default "5m")                          
+      # - OLLAMA_MAX_LOADED_MODELS   Maximum number of loaded models per GPU                                                
+      # - OLLAMA_MAX_QUEUE           Maximum number of queued requests                                                      
+      # - OLLAMA_MODELS              The path to the models directory                                                       
+      # - OLLAMA_NUM_PARALLEL        Maximum number of parallel requests                                                    
+      # - OLLAMA_NOPRUNE             Do not prune model blobs on startup                                                    
+      # - OLLAMA_ORIGINS             A comma separated list of allowed origins                                              
+      # - OLLAMA_SCHED_SPREAD        Always schedule model across all GPUs
