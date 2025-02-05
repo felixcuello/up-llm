@@ -21,10 +21,10 @@ TODO
         - [ ] Understand how to use Spark in the cluster
 
 - [ ] Downloading a tiny deepseek model and made it to work locally
-    - [X] Create a docker container with Openllama
+    - [X] Create a docker container with Ollama
     - [X] Install Deepseek-r1 in the container
     - [X] Make the container to work automatically
-    - [X] Understand how to use Openllama
+    - [X] Understand how to use Ollama
     - [X] run the model
     - [ ] understand how to work with the model
     - [ ] can we fine tune the model?
