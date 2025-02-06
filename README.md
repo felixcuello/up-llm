@@ -36,7 +36,7 @@ TO READ
 
 - [ ] Keep learning / reading about LLMs
     - [ ] "Building LLMs for Production" (book)
-        - [ ] Chapter i: Introduction
+        - [X] Chapter i: Introduction
         - [ ] Chapter ii: LLM Architectures Landscape
         - [ ] Chapter iii: LLMs in practice
         - [ ] Chapter iv: Introduction to Prompting
