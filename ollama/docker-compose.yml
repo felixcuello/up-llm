@@ -9,7 +9,6 @@ services:
     volumes:
       - .:/app
       - ./models:/root/.ollama
-    entrypoint: ["./serve_deepseek.sh"]
     environment:
       # - OLLAMA_DEBUG=1
       - OLLAMA_HOST=0.0.0.0:11434
