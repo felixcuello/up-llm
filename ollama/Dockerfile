@@ -2,4 +2,4 @@ FROM ollama/ollama:latest
 
 ENV MODELS=deepseek-r1:1.5b
 
-CMD ["sh", "ollama", "serve"]
+CMD ["sh", "./run_deepseek.sh"]
