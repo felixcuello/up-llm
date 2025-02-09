@@ -30,7 +30,7 @@ all:
 	@echo " make MODEL=<model> serve_model    # (e.g. make MODEL=deepseek-coder:1.3b serve_model)"
 	@echo ""
 
-IMAGE_NAME:=ollama
+IMAGE_NAME:=up_ollama
 
 build:
 	@docker build -t $(IMAGE_NAME) .
@@ -42,10 +42,10 @@ down:
 	@docker compose down
 
 shell:
-	@docker compose run --rm --service-ports -it $(IMAGE_NAME) /bin/bash
+	@docker compose run --rm --service-ports --entrypoint /bin/bash -ti $(IMAGE_NAME) 
 
 run_model:
-	@docker compose run --rm --env MODEL=$(MODEL) --service-ports $(IMAGE_NAME) ./run_model.sh
+	@docker compose run --rm --env MODEL=$(MODEL) --service-ports -ti $(IMAGE_NAME) ./run_model.sh
 
 serve_model:
 	@docker compose run --rm --env MODEL=$(MODEL) --service-ports $(IMAGE_NAME) ./serve_model.sh

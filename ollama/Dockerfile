@@ -1,1 +1,14 @@
 FROM ollama/ollama:latest
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN apt update && \
+    apt install \
+      -y --no-install-recommends \
+      pip
+
+RUN pip3 install torch
+RUN pip3 install -r requirements.txt
+
