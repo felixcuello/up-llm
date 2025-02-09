@@ -9,6 +9,22 @@ The idea of this repository is to:
 3. Create code snippets that could be useful for us
 4. Create a list of questions that we have and that we need to answer / TODO list
 
+Ollama
+---------------------------------------------------------------------------------------------------------------------
+The `ollama` folder contains a way to run the model in a docker container. It can be executed without any problem in a
+regular personal computer, but if you want to use GPUs you need to follow the:
+[nvidia
+documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation)
+where they explain how to enable the GPUs. The `Makefile` contains how to run the model and everything + the
+documentation from Nvidia.
+
+
+## How to ask a prompt to a ollama (deepseek) model via API?
+
+```bash
+ curl -X POST http://localhost:11434/api/generate -d '{ "model": "deepseek-r1:1.5b", "prompt": "what is the capital of france?", "stream": false }'
+```
+
 
 TODO
 ---------------------------------------------------------------------------------------------------------------------
@@ -26,9 +42,8 @@ TODO
     - [X] Make the container to work automatically
     - [X] Understand how to use Ollama
     - [X] run the model
-    - [ ] understand how to work with the model
-    - [ ] can we fine tune the model?
-    - [ ] check if we can do the same at the university model
+    - [ ] understand how to fine tune the model
+    - [ ] check if we can do the same at the university cluster
 
 
 TO READ
@@ -62,15 +77,3 @@ LINKS & RESOURCES
 
 RUNBOOKS & COMMANDS
 ---------------------------------------------------------------------------------------------------------------------
-## ollama 
-
-Ollama can be used to run LLMs models, and we have created a docker image (and its docker-compose file) to run it
-locally. It can be executed without any problem in a local machine , but it's important to add some local drivers in
-case we want to use GPUs. In the `Makefile` there are some good links in the example.
-
-
-## How to ask a prompt to a ollama (deepseek) model via API?
-
-```bash
- curl -X POST http://localhost:11434/api/generate -d '{ "model": "deepseek-r1:1.5b", "prompt": "what is the capital of france?", "stream": false }'
-```
