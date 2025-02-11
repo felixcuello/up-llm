@@ -1,0 +1,3 @@
+ipdb == 0.13.13                              # debugging (if needed)
+torch == 2.6.0                               # tensor operations
+unsloth == 2025.2.5                          # LLM fine-tuning
