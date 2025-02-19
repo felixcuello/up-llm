@@ -20,9 +20,9 @@ all:
 	@echo ""
 	@echo " 🦙 OLLAMA 🦙 - You can run the model (💻 INTERACTIVE) or serve the model (🚀 SERVER via API)"
 	@echo " model list:"
-	@echo "   run_deepseek-coder:1.3b         # DeepSeek Coder is a capable coding model"
-	@echo "   run_deepseek-r1:1.5b            # DeepSeek's first-generation of reasoning models with comparable performance to OpenAI-o1"
-	@echo "   run_deepseek-v3:671b            # A strong Mixture-of-Experts (MoE) language model"
+	@echo "   deepseek-coder:1.3b         # DeepSeek Coder is a capable coding model"
+	@echo "   deepseek-r1:1.5b            # DeepSeek's first-generation of reasoning models with comparable performance to OpenAI-o1"
+	@echo "   deepseek-v3:671b            # A strong Mixture-of-Experts (MoE) language model"
 	@echo ""
 	@echo " INVOCATION"
 	@echo ""
@@ -45,7 +45,7 @@ shell:
 	@docker compose run --rm --service-ports --entrypoint /bin/bash -ti $(IMAGE_NAME) 
 
 run_model:
-	@docker compose run --rm --env MODEL=$(MODEL) --service-ports -ti $(IMAGE_NAME) ./run_model.sh
+	@docker compose run --entrypoint /app/run_model.sh --rm --env MODEL=$(MODEL) --service-ports -ti $(IMAGE_NAME)
 
 serve_model:
 	@docker compose run --rm --env MODEL=$(MODEL) --service-ports $(IMAGE_NAME) ./serve_model.sh
