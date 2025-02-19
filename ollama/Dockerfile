@@ -9,6 +9,6 @@ RUN apt update && \
       -y --no-install-recommends \
       pip
 
-RUN pip3 install torch
+RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 
