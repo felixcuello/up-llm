@@ -30,22 +30,30 @@ all:
 	@echo " make MODEL=<model> serve_model    # (e.g. make MODEL=deepseek-coder:1.3b serve_model)"
 	@echo ""
 
-IMAGE_NAME:=up_ollama
+IMAGE_NAME := up_ollama
+DOCKERCMD := docker
+UNIVERSITYLABUSER := labp8115
+
+# The laboratory@university requires to use 'sudo' when running docker otherwise it throws a permission exception
+# --------------------------------------------------------------------------------------------------------------------
+ifeq ($(USER),$(UNIVERSITYLABUSER)) # User from the UP laboratory
+DOCKERCMD := sudo docker
+endif
 
 build:
-	@docker build -t $(IMAGE_NAME) .
+	$(DOCKERCMD) build -t $(IMAGE_NAME) .
 
 build-nc:
-	@docker build --no-cache -t $(IMAGE_NAME) .
+	@$(DOCKERCMD) build --no-cache -t $(IMAGE_NAME) .
 
 down:
-	@docker compose down
+	@$(DOCKERCMD) compose down
 
 shell:
-	@docker compose run --rm --service-ports --entrypoint /bin/bash -ti $(IMAGE_NAME) 
+	@$(DOCKERCMD) compose run --rm --service-ports --entrypoint /bin/bash -ti $(IMAGE_NAME) 
 
 run_model:
-	@docker compose run --entrypoint /app/run_model.sh --rm --env MODEL=$(MODEL) --service-ports -ti $(IMAGE_NAME)
+	@$(DOCKERCMD) compose run --entrypoint /app/run_model.sh --rm --env MODEL=$(MODEL) --service-ports -ti $(IMAGE_NAME)
 
 serve_model:
-	@docker compose run --rm --env MODEL=$(MODEL) --service-ports $(IMAGE_NAME) ./serve_model.sh
+	@$(DOCKERCMD) compose run --rm --env MODEL=$(MODEL) --service-ports $(IMAGE_NAME) ./serve_model.sh

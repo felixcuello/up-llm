@@ -7,6 +7,7 @@ COPY requirements.txt .
 RUN apt update && \
     apt install \
       -y --no-install-recommends \
+      iputils-ping \
       pip
 
 RUN pip3 install --upgrade pip

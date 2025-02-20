@@ -1,5 +1,8 @@
 ---
 services:
+  chromadb:
+    image: chromadb/chroma
+
   up_ollama:
     platform: linux/x86_64
     build:
@@ -21,3 +24,5 @@ services:
       # - OLLAMA_NOPRUNE             Do not prune model blobs on startup                                                    
       # - OLLAMA_ORIGINS             A comma separated list of allowed origins                                              
       # - OLLAMA_SCHED_SPREAD        Always schedule model across all GPUs
+    depends_on:
+      - chromadb
