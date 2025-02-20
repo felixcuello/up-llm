@@ -1,2 +1,5 @@
 ipdb == 0.13.13                              # debugging (if needed)
 torch == 2.4.1                               # tensor operations
+langchain == 0.2.17                          # platform for building, testing, and monitoring LLM applications
+chromadb == 0.5.23                           # chromadb lib
+gradio == 4.44.1                             # Build Machine Learning Web Apps
